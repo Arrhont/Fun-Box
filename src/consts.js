@@ -1,0 +1,5 @@
+export const CARD_STATE = {
+    DEFAULT: 'DEFAULT',
+    DISABLED: 'DISABLED',
+    SELECTED: 'SELECTED',
+  }
