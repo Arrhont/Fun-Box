@@ -39,6 +39,14 @@
     font-size: 18px;
 }
 
+.ProductCard-Tooltip{
+  color: white;
+}
+
+.ProductCard-Link{
+  color: blue;
+}
+
 @media(max-width: 768px){
     .ProductCard-Card {
       width: calc(320px * 0.85);
