@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+
+import ProductCard from '../ProductCard/ProductCard';
+import { CARD_STATE } from '../consts';
+
 import './App.css';
-import ProductCard from './ProductCard';
-import { CARD_STATE } from './consts';
 
 const mock = [
     {
@@ -13,39 +15,48 @@ const mock = [
         mouseGiftCount: 1,
         imageUrl: '/nice_cat.png',
         weight: 0.5,
-        description: 'Печень утки разварная с артишоками',
+        description: 'Печень утки разварная с артишоками.',
         quantity: 1,
     },
     {
         id: 2,
         marketingText: 'Сказочное заморское яство',
         brandName: 'Нямушка',
-        flavor: 'с фуа-гра',
-        portionCount: 10,
-        mouseGiftCount: 1,
+        flavor: 'с рыбой',
+        portionCount: 40,
+        mouseGiftCount: 2,
         imageUrl: '/nice_cat.png',
-        weight: 0.5,
-        description: 'Печень утки разварная с артишоками',
+        weight: 2,
+        description: 'Головы щучьи с чесноком, да свежайшая семгушка.',
         quantity: 2,
     },
     {
         id: 3,
         marketingText: 'Сказочное заморское яство',
         brandName: 'Нямушка',
-        flavor: 'с фуа-гра',
-        portionCount: 10,
-        mouseGiftCount: 1,
+        flavor: 'с курой',
+        portionCount: 100,
+        mouseGiftCount: 5,
+        bestDeal: true,
         imageUrl: '/nice_cat.png',
-        weight: 0.5,
+        weight: 5,
         description: 'Печень утки разварная с артишоками',
         quantity: 0,
     },
 ];
 
 function App() {
-
-    const [products, setProducts] = useState(mock);
+    // Мок - временная заглушка для тестирования вместо приходящей с бэкенда коллекции товаров.
+    const [products] = useState(mock);
     const [selectedProducts, setSelectedProducts] = useState(new Set());
+
+    const getCardState = useCallback((product) => {
+        return product.quantity === 0
+            ? CARD_STATE.DISABLED
+            : selectedProducts.has(product)
+                ? CARD_STATE.SELECTED
+                : CARD_STATE.DEFAULT;
+    }, [selectedProducts]);
 
     return (
         <div className="App">
@@ -53,14 +64,8 @@ function App() {
             <div className="App-Products">
                 {products.map((product) => (
                     <ProductCard
-                        className="App-ProductItem"
-                        cardState={
-                            product.quantity === 0
-                                ? CARD_STATE.DISABLED
-                                : selectedProducts.has(product)
-                                ? CARD_STATE.SELECTED
-                                : CARD_STATE.DEFAULT
-                        }
+                        className={"App-ProductCard"}
+                        cardState={getCardState(product)}
                         setSelectedProducts={setSelectedProducts}
                         product={product}
                         key={product.id}

@@ -1,0 +1,225 @@
+/* consts: 
+320px - CardWidth
+480px - CardHeight
+45px - catetLength
+ */
+
+.ProductCard {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  position: relative;
+  margin-top: 30px;
+  user-select: none;
+}
+
+.ProductCard-Border {
+  display: inline-flex;
+  padding: 4px;
+  background-color: rgb(22,152,217);
+  /* Обрезка угла карточки товара не работает в IE */
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, calc(45 / 320 * 100%) 0, 0 calc(45 / 480 * 100%));
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.ProductCard-Card {
+  position: relative;
+  width: 320px;
+  height: 480px;
+  background-color: aliceblue; /* TODO */
+  /* Обрезка угла карточки товара не работает в IE */
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, calc(45 / 320 * 100%) 0, 0 calc(45 / 480 * 100%));
+  border-radius: 10px;
+  background-size: 127%;
+  background-repeat: no-repeat;
+  background-position: -30px 235%;
+}
+
+.ProductCard-Border_selected {
+  background-color: rgb(217,22,103);
+  /* В IE будет pointer  */
+  cursor: grabbing;
+}
+
+.ProductCard-Border_disabled {
+  background-color: rgb(3,3,3);
+  cursor: default;
+}
+
+.ProductCard-TextContainer {
+  margin-left: calc(45/320 * 100%);
+  margin-top: calc(21/490 * 100%);
+
+}
+
+.ProductCard-Fade{
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+}
+
+
+.ProductCard-CatDisapproval{
+  font-size: 16px;
+  color: rgb(230, 46, 122);
+
+}
+
+.ProductCard-MarketingText {
+  font-size: 16px;
+  color: rgb(102, 102, 102);
+}
+
+.ProductCard-BrandName {
+  font-size: 48px;
+  font-weight: bold;
+}
+.ProductCard-Flavor {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ProductCard-PortionCount {
+  margin-top: calc(30/490 * 100%);
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+}
+
+.ProductCard-PortionCount_bold {
+  font-weight: bold;
+}
+
+.ProductCard-MouseGift {
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+}
+
+.ProductCard-MouseGift_bold {
+  font-weight: bold;
+}
+
+.ProductCard-BestDeal {
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+}
+
+.ProductCard-Weight {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  bottom: calc(18 / 480 * 100%);
+  right: calc(18 / 320 * 100%);
+  height: calc(81/480 * 100%);
+  width: calc(81/320 * 100%);
+  background-color:rgb(22,152,217);
+  font-size: 42px;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.ProductCard-Weight_disabled {
+  background-color: rgb(179,179,179);
+}
+
+.ProductCard-WeightUnit {
+  font-size: 18px;
+}
+
+.ProductCard-Tooltip{
+  position: absolute;
+  width: 100%;
+  margin-top: 10px;
+  color: white;
+  font-size: 13px;
+  text-align: center;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.004);
+}
+
+.ProductCard-Tooltip_disabled {
+  color: rgb(255,255,102);
+}
+
+.ProductCard-Link{
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media(max-width: 900px){
+  .ProductCard-Card {
+    width: calc(320px * 0.75);
+    height: calc(480px * 0.75);
+  }
+
+  .ProductCard-MarketingText {
+    font-size: 14px;
+  }
+
+  .ProductCard-CatDisapproval{
+    font-size: 14px;
+  }
+
+  .ProductCard-BrandName {
+    font-size: 36px;
+  }
+
+  .ProductCard-Flavor {
+    font-size: 18px;
+  }
+
+  .ProductCard-Weight {
+    font-size: 32px;
+  }
+
+  .ProductCard-WeightUnit {
+    font-size: 14px;
+  }
+}
+
+@media(max-width: 480px){
+  .ProductCard-Card {
+    width: calc(320px * 0.6);
+    height: calc(480px * 0.6);
+  }
+
+  .ProductCard-MarketingText {
+    font-size: 12px;
+  }
+
+  .ProductCard-CatDisapproval{
+    font-size: 12px;
+  }
+
+  .ProductCard-BrandName {
+    font-size: 24px;
+  }
+
+  .ProductCard-Flavor {
+    font-size: 14px;
+  }
+
+  .ProductCard-PortionCount {
+    font-size: 12px;
+  }
+
+  .ProductCard-MouseGift {
+    font-size: 12px;
+    }
+
+  .ProductCard-BestDeal {
+    font-size: 12px;
+  }
+
+  .ProductCard-Weight {
+    font-size: 24px;
+  }
+
+  .ProductCard-WeightUnit {
+    font-size: 10px;
+  }
+}
