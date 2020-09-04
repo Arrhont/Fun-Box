@@ -41,7 +41,7 @@
 }
 
 .ProductCard-Border_disabled {
-  background-color: rgb(3,3,3);
+  background-color: rgb(179,179,179);
   cursor: default;
 }
 
